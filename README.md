@@ -10,8 +10,7 @@ The dataset is extracted from [Amazon's US Reviews Dataset](https://s3.amazonaws
 Amazon Vine is a program launched by Amazon.com that allows manufacturers and publishers to receive reviews for their products from a filtered group of Amazon customers, called "Vine Voices." These Vine Voices are chosen based on several criteria, including their total number of reviews and helpfulness of reviews. **In exchange for free products, these Vine Voices are required to publish a review.** [Amazon's Vine help guide](https://www.amazon.com/gp/vine/help) states that "Voices are not paid" and that Amazon welcomes an "honest opinion about the product."
 
 ## Extract, Transform, Load (ETL)  
-Using [Amazon_Reviews_ETL.ipynb](https://github.com/Mishkanian/Amazon_Vine_Analysis/blob/main/Amazon_Reviews_ETL.ipynb), the video game dataset is extracted into the following DataFrames: customers_df, products_df, review_id_df, and vine_df.
-After connecting to the AWS RDS instance, each of these DataFrames is written to the existing tables in pgAdmin.
+Using [Amazon_Reviews_ETL.ipynb](https://github.com/Mishkanian/Amazon_Vine_Analysis/blob/main/Amazon_Reviews_ETL.ipynb), the video game dataset is extracted into the following DataFrames: customers_df, products_df, review_id_df, and vine_df. After connecting to the AWS RDS instance, each of these DataFrames is written to the existing tables in pgAdmin. The password and url used to configure the settings for the RDS have been hidden for security, you will need to apply your own information in this section.
 
 ![postgres_table](https://github.com/Mishkanian/Amazon_Vine_Analysis/blob/main/README_images/postgres_tables.png)
 
@@ -21,10 +20,21 @@ For the purpose of this project, only the vine_table is necessary, which is expo
 
 To determine if there is any review bias, Pandas is used to filter and create new DataFrames. This potion of the analysis is found in [Vine_Review_Analysis.ipynb](https://github.com/Mishkanian/Amazon_Vine_Analysis/blob/main/Vine_Review_Analysis.ipynb).
 
+The vine.csv file is read in as DataFrame:
+
+![vine_df](https://github.com/Mishkanian/Amazon_Vine_Analysis/blob/main/README_images/vine_df.png)
+
 In the [first filter](https://github.com/Mishkanian/Amazon_Vine_Analysis/blob/main/README_images/high_votes_filter1.png), vine_df is filtered to only show rows where the number of total votes is greater than or equal to 20. Doing this will help pick reviews that more likely to be helpful and to avoid having division by zero errors. This filter is saved as a new DataFrame.
 ![first_filter](https://github.com/Mishkanian/Amazon_Vine_Analysis/blob/main/README_images/high_votes_filter1.png)
 
-A second filter (Filter #2) is then used on previous filter (Filter #1) to 
+A [second filter](https://github.com/Mishkanian/Amazon_Vine_Analysis/blob/main/README_images/helpful_votes_filter2.png) (Filter #2) is then used on previous filter (Filter #1) to create a new DataFrame that retrieves all rows where the number of helpful votes divided by the total votes is greater than or equal to 50%.
+
+![second filter](https://github.com/Mishkanian/Amazon_Vine_Analysis/blob/main/README_images/helpful_votes_filter2.png)
+
+Finally, two more DataFrames are created to separate Filter #2 between reviews written as [part of the Vine program (paid)](https://github.com/Mishkanian/Amazon_Vine_Analysis/blob/main/README_images/yes_vine_df.png) and reviews [not part of the Vine program (unapid)](https://github.com/Mishkanian/Amazon_Vine_Analysis/blob/main/README_images/no_vine_df.png). After creating these final DataFrames, the following metrics are determined:
+- The total number of reviews.
+- The number of 5-star reviews.
+- The percentage of 5-star reviews (Paid and Unpaid).
 
 ## Results
 For the Video Game dataset:
