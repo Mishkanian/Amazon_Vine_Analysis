@@ -46,10 +46,12 @@ For the Video Game dataset:
   - Approximately **38.70% of non-Vine reviews were 5-stars.**
 
 ## Summary
-Based on this analysis, there appears to be a positivity bias among Video Game reviews in the Vine program. While only 38.70% of regular reviews gave 5-stars, 51.06% of Vine reviews gave 5-stars.
+Based on this analysis, **there appears to be a positivity bias among Video Game reviews in the Vine program**. While only 38.70% of regular reviews gave 5-stars, 51.06% of Vine reviews gave 5-stars. 
+
+However, it should be noted that the data present in this dataset is not reflective of a single product. This dataset contains a multitude of different hardware, software and accessories for different video game consoles. As a result of this large variety of products, this analysis cannot be applied to individual products, but rather the dataset as a whole. Furthermore, out of the 40,565 data points analyzed, only 0.23% are Vine reviews. This small amount of reviews is not significant enough to sway the overall rating of products listed for sale on Amazon.
 
 ### Recommendations for Further Analysis
-One additional analysis that could be performed on this dataset to support the assertion of positivity bias is 
+One additional analysis that could be performed on this dataset to further research the possibility of positivity bias is to compare the average Vine review ratings to the average customer rating. If it is found that Vine customers have a higher average star rating than non-Vine customers, this might be an indication of positivity bias. 
 
 **Author: Michael Mishkanian**  
 For all questions and inquiries, please contact me on [LinkedIn](https://www.linkedin.com/in/michaelmishkanian/).
