@@ -21,9 +21,10 @@ For the purpose of this project, only the vine_table is necessary, which is expo
 
 To determine if there is any review bias, Pandas is used to filter and create new DataFrames. This potion of the analysis is found in [Vine_Review_Analysis.ipynb](https://github.com/Mishkanian/Amazon_Vine_Analysis/blob/main/Vine_Review_Analysis.ipynb).
 
-In the [first filter](https://github.com/Mishkanian/Amazon_Vine_Analysis/blob/main/README_images/high_votes_filter1.png), vine_df is filtered to only show rows where
+In the [first filter](https://github.com/Mishkanian/Amazon_Vine_Analysis/blob/main/README_images/high_votes_filter1.png), vine_df is filtered to only show rows where the number of total votes is greater than or equal to 20. Doing this will help pick reviews that more likely to be helpful and to avoid having division by zero errors. This filter is saved as a new DataFrame.
 ![first_filter](https://github.com/Mishkanian/Amazon_Vine_Analysis/blob/main/README_images/high_votes_filter1.png)
 
+A second filter (Filter #2) is then used on previous filter (Filter #1) to 
 
 ## Results
 For the Video Game dataset:
